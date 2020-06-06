@@ -1,0 +1,13 @@
+.App > header {
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 10px double $clr-bg;
+    border-bottom: 10px double $clr-bg;
+    background-color: white;
+
+    h1 {
+        font-family: "Oleo Script", cursive;
+        color: $clr-accent-main;
+        margin: 0;
+    }
+}

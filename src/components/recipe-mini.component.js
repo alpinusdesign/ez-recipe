@@ -1,24 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 const RecipeMini = (props) => {
   return (
-    <Link
-      to={`/${props.recipe._id}`}
-      recipe={props.recipe}
-      className="recipe-mini"
-    >
-      <h2>{props.recipe.name}</h2>
-      <Link to={"/edit"} className="btn-edit">
-        Redigera
+    <div className="Recipe-mini">
+      <Link to={`/recipe/${props.recipe._id}`}>
+        {/* - Link to the full recipe - */}
+        {props.recipe.name}
       </Link>
-      <button
-        className="btn-delete"
-        onClick={() => props.deleteRecipe(props.recipe._id)}
-      >
-        Radera
-      </button>
-    </Link>
+      <div className="utility">
+        {/* - Link to recipe editor - */}
+        <Link to={`/edit/${props.recipe._id}`} className="btn-recipe-edit">
+          Redigera
+        </Link>
+
+        {/* - Remove recipe-button - */}
+        <button
+          className="btn-recipe-delete"
+          onClick={() => props.deleteRecipe(props.recipe._id)}
+        >
+          Radera
+        </button>
+      </div>
+    </div>
   );
 };
 

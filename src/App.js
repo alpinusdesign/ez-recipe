@@ -1,23 +1,26 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import "./css/App.css";
-import Header from "./components/header.component";
-import Footer from "./components/footer.component";
-import RecipeList from "./components/recipe-list.component";
-import Recipe from "./components/recipe.component";
-// import EditRecipe from "./components/edit-recipe.component";
-// import CreateRecipe from "./components/create-recipe.component";
+import RecipeList from "./components/Recipe-list.component";
+import RecipeFull from "./components/Recipe-full.component";
+import RecipeEditor from "./components/Recipe-editor.component";
+import RecipeCreator from "./components/Recipe-creator.component";
 
 function App() {
   return (
     <Router>
-      <div className="container">
-        <Header />
-        <Route path="/" exact component={RecipeList} />
-        <Route path="/:id" exact component={Recipe} />
-        {/* <Route path="/edit/:id" component={EditRecipe} />
-        <Route path="/create" component={CreateRecipe} /> */}
-        <Footer />
+      <div className="App">
+        <header className="Header">
+          <h1>EZRecipe</h1>
+        </header>
+        <main>
+          <Route path="/" exact component={RecipeList} />
+          <Route path="/recipe/:id" exact component={RecipeFull} />
+          <Route path="/edit/:id" exact component={RecipeEditor} />
+          <Route path="/add" exact component={RecipeCreator} />
+        </main>
+        <footer className="Footer">
+          <span>Copyright Alpinus Design 2020</span>
+        </footer>
       </div>
     </Router>
   );

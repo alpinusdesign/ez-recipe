@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import RecipeMini from "./recipe-mini.component";
+import { Link } from "react-router-dom";
+import RecipeMini from "./Recipe-mini.component";
 import axios from "axios";
 
 class RecipeList extends Component {
+  /* - Constructor - */
   constructor(props) {
     super(props);
-
-    // Function bindings
-    this.deleteRecipe = this.deleteRecipe.bind(this);
 
     this.state = {
       recipes: [],
     };
   }
 
-  recipeList() {
+  // Prints all recipes.
+  recipeList = () => {
     return this.state.recipes.map((currentRecipe) => {
       return (
         <RecipeMini
@@ -24,18 +24,20 @@ class RecipeList extends Component {
         />
       );
     });
-  }
+  };
 
-  deleteRecipe(id) {
+  // Removes the recipe from the database.
+  deleteRecipe = (id) => {
     axios.delete("http://localhost:5000/recipes/" + id).then((res) => {
       console.log(res.data);
     });
-
     this.setState({
       recipes: this.state.recipes.filter((el) => el._id !== id),
     });
-  }
+  };
 
+  /* - Lifecycle methods - */
+  // Get all recipes from database.
   componentDidMount() {
     axios
       .get("http://localhost:5000/recipes/")
@@ -48,7 +50,17 @@ class RecipeList extends Component {
   }
 
   render() {
-    return <div>{this.recipeList()}</div>;
+    return (
+      <main className="Recipe-list">
+        {/* - Print recipes - */}
+        {this.recipeList()}
+
+        {/* - Link to recipe-creator - */}
+        <Link to={"/add"} className="btn-add">
+          Lägg till nytt recept
+        </Link>
+      </main>
+    );
   }
 }
 

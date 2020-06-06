@@ -1,0 +1,20 @@
+nav.nav-recipe {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+    background-color: rgb(241, 241, 241);
+
+    & > a {
+        padding: 1rem;
+    }
+
+    .utility {
+        .btn-recipe-edit {
+            padding: 1rem;
+        }
+        .btn-recipe-delete {
+            padding: 1rem;
+        }
+    }
+}

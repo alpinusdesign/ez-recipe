@@ -2,14 +2,14 @@ const router = require("express").Router();
 let Recipe = require("../models/recipes.model");
 
 /* - GET - */
-// Hämta alla recept.
+// Get ALL recipes.
 router.route("/").get((req, res) => {
   Recipe.find()
     .then((recipes) => res.json(recipes))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-// Hämta recept med angivet ID.
+// Get the specified recipe.
 router.route("/:id").get((req, res) => {
   Recipe.findById(req.params.id)
     .then((recipes) => res.json(recipes))
@@ -17,7 +17,7 @@ router.route("/:id").get((req, res) => {
 });
 
 /* - DELETE - */
-// Radera recept med angivet ID.
+// Remove the specified recipe.
 router.route("/:id").delete((req, res) => {
   Recipe.findByIdAndDelete(req.params.id)
     .then(() => res.json("Recipe deleted."))
@@ -25,7 +25,7 @@ router.route("/:id").delete((req, res) => {
 });
 
 /* - PUT - */
-// Uppdatera recept med angivet ID och angivna data.
+// Update specified recipe with input data.
 router.route("/:id").put((req, res) => {
   Recipe.findByIdAndUpdate(req.params.id, {
     name: req.body.name,
@@ -38,14 +38,14 @@ router.route("/:id").put((req, res) => {
 });
 
 /* - POST - */
-// Lägg till nytt recept med angivna data.
+// Add new recipe to database.
 router.route("/").post((req, res) => {
   const name = req.body.name;
   const description = req.body.description;
   const ingredients = req.body.ingredients;
   const instructions = req.body.instructions;
 
-  // Mata in mottagen data i nytt recept.
+  // Add submitted data to recipe.
   const newRecipe = new Recipe({
     name,
     description,
@@ -53,7 +53,7 @@ router.route("/").post((req, res) => {
     instructions,
   });
 
-  // Lägg till nytt recept till databas.
+  // Add new recipe to database.
   newRecipe
     .save()
     .then(() => res.json("Recipe added!"))

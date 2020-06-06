@@ -5,8 +5,8 @@ let Schema = mongoose.Schema;
 let recipeSchema = new Schema({
   name: String,
   description: String,
-  ingredients: [String],
-  instructions: [String],
+  ingredients: [{ text: String }],
+  instructions: [{ text: String }],
 });
 
 module.exports = mongoose.model("Recipes", recipeSchema);
