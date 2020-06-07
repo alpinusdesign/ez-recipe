@@ -113,21 +113,23 @@ class RecipeCreator extends Component {
           {/* - Form - */}
           <form onSubmit={this.onSubmitRecipe}>
             {/* - Name - */}
-            <label>Namn:</label>
-            <input
-              type="text"
-              onChange={this.onChangeName}
-              value={this.state.name}
-            ></input>
-
+            <fieldset>
+              <label>Namn:</label>
+              <input
+                type="text"
+                onChange={this.onChangeName}
+                value={this.state.name}
+              ></input>
+            </fieldset>
             {/* - Description - */}
-            <label>Beskrivning</label>
-            <textarea
-              rows="6"
-              onChange={this.onChangeDescription}
-              value={this.state.description}
-            ></textarea>
-
+            <fieldset>
+              <label>Beskrivning</label>
+              <textarea
+                rows="6"
+                onChange={this.onChangeDescription}
+                value={this.state.description}
+              ></textarea>
+            </fieldset>
             {/* - Ingredients - */}
             <fieldset>
               <legend>Ingredienser</legend>
