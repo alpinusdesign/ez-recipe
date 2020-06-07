@@ -28,7 +28,7 @@ class RecipeList extends Component {
 
   // Removes the recipe from the database.
   deleteRecipe = (id) => {
-    axios.delete("http://localhost:5000/recipes/" + id).then((res) => {
+    axios.delete("/recipes/" + id).then((res) => {
       console.log(res.data);
     });
     this.setState({
@@ -40,7 +40,7 @@ class RecipeList extends Component {
   // Get all recipes from database.
   componentDidMount() {
     axios
-      .get("http://localhost:5000/recipes/")
+      .get("/recipes/")
       .then((res) => {
         this.setState({ recipes: res.data });
       })

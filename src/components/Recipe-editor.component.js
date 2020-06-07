@@ -108,7 +108,7 @@ class RecipeEditor extends Component {
   // Fetches the recipe from the database if the component mounted correctly.
   componentDidMount() {
     axios
-      .get(`http://localhost:5000/recipes/${this.props.match.params.id}`)
+      .get(`/recipes/${this.props.match.params.id}`)
       .then((res) => {
         this.setState({
           id: res.data._id,
