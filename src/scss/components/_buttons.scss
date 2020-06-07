@@ -1,0 +1,130 @@
+input[type="submit"],
+button {
+    cursor: pointer;
+}
+
+// Used for general, rounded buttons.
+%btn-shared {
+    text-align: center;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid $clr-text-main;
+    border-radius: 5rem;
+    margin: 1rem auto;
+    color: white;
+    background-color: $clr-text-main;
+    font-weight: bold;
+    transition: 0.3s;
+    &:hover {
+        color: #2f2f2f;
+        background-color: white;
+    }
+}
+
+.btn {
+    @extend %btn-shared;
+}
+
+// Button with an added plus on the end.
+.btn-add {
+    @extend %btn-shared;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    &:after {
+        color: white;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 1.25em;
+        content: "\f055";
+        display: inline-block;
+        margin-left: 0.5rem;
+        transition: inherit;
+    }
+
+    &:hover:after {
+        color: $clr-text-main;
+    }
+}
+
+.utility {
+    display: flex;
+    z-index: 1;
+    height: 100%;
+}
+
+// Used for general, rounded buttons.
+%btn-recipe-shared {
+    color: $clr-text-main;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border: none;
+    background-color: inherit;
+    transition: 0.2s;
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+    }
+}
+
+// Used on the return button in the recipe-navigation.
+.btn-recipe-return {
+    @extend %btn-recipe-shared;
+
+    &:hover {
+        background-color: $clr-text-main;
+    }
+
+    &:before {
+        color: $clr-text-main;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f060";
+        padding-right: 0.5em;
+        transition: 0.3s;
+    }
+    &:hover:before {
+        color: white;
+    }
+}
+
+// Used on the edit button in the recipe-navigation.
+.btn-recipe-edit {
+    @extend %btn-recipe-shared;
+
+    &:hover {
+        background-color: #339cff;
+    }
+}
+
+// Used on the delete button in the recipe-navigation.
+.btn-recipe-delete {
+    @extend %btn-recipe-shared;
+
+    &:hover {
+        background-color: #ff2020;
+    }
+}
+
+// Used with with item-input fields to remove ingredients and instructions.
+.btn-item-delete {
+    text-align: center;
+    padding: 0.5rem 1rem;
+    background-color: initial;
+    border: 0;
+    font-weight: bold;
+    transition: 0.3s;
+
+    &:before {
+        color: white;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 1.5em;
+        content: "\f056";
+        transition: inherit;
+    }
+
+    &:hover:before {
+        color: orange;
+    }
+}
