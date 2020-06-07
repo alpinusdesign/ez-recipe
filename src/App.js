@@ -9,15 +9,18 @@ function App() {
   return (
     <Router>
       <div className="App">
+        {/* - Header - */}
         <header className="Header">
           <h1>EZRecipe</h1>
         </header>
+        {/* - Main - */}
         <main>
           <Route path="/" exact component={RecipeList} />
           <Route path="/recipe/:id" exact component={RecipeFull} />
           <Route path="/edit/:id" exact component={RecipeEditor} />
           <Route path="/add" exact component={RecipeCreator} />
         </main>
+        {/* - Body - */}
         <footer className="Footer">
           <span>Copyright Alpinus Design 2020</span>
         </footer>
