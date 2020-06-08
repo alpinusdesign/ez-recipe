@@ -8,6 +8,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
 
 // Använd enviromentvariabel.
 require("dotenv").config();
@@ -37,6 +38,11 @@ connection.once("open", () => {
 // Dirigera trafik till recepthanterare.
 const recipesRouter = require("./routes/recipes");
 app.use("/api/recipes", recipesRouter);
+
+// Dirigera all övrig trafik till webbapplikationen.
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/build/index.html"));
+});
 
 // Kör server.
 app.listen(port, () => {

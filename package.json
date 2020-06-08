@@ -24,10 +24,11 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "cd backend && node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "cd backend && node server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
