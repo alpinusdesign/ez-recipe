@@ -78,7 +78,7 @@ class RecipeCreator extends Component {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5000/recipes/", {
+      .post("/api/recipes/", {
         name: this.state.name,
         description: this.state.description,
         ingredients: this.state.ingredients,

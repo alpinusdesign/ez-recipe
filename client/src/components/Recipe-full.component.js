@@ -21,7 +21,7 @@ class RecipeFull extends Component {
   /* - General methods - */
   // Removes the recipe from the database and indirectly redirects on next render.
   deleteRecipe(id) {
-    axios.delete(`/recipes/${id}`).then((res) => {
+    axios.delete(`/api/recipes/${id}`).then((res) => {
       console.log(res.data);
       this.setState({ redirect: true });
     });
@@ -30,7 +30,7 @@ class RecipeFull extends Component {
   /* - Lifecycle methods - */
   componentDidMount() {
     axios
-      .get(`/recipes/${this.props.match.params.id}`)
+      .get(`/api/recipes/${this.props.match.params.id}`)
       .then((res) => {
         this.setState({ recipe: res.data });
       })

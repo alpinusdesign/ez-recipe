@@ -2,7 +2,7 @@
     Namn: Linus Östlund
     Kurs: DT162G, JavaScriptbaserad webbutveckling, 7.5hp
     Moment: Projektarbete
-    Senast uppdaterad: 2020-05-20
+    Senast uppdaterad: 2020-06-07
 */
 
 const express = require("express");
@@ -18,6 +18,9 @@ const app = express();
 
 // Välj port baserat på enviromentvariabeln. Annars, välj port 5000.
 const port = process.env.PORT || 5000;
+
+// Sätt sökväg för statiska filer.
+app.use(express.static(path.join(__dirname, "client/build")));
 
 app.use(cors());
 app.use(express.json());
@@ -38,11 +41,6 @@ connection.once("open", () => {
 // Dirigera trafik till recepthanterare.
 const recipesRouter = require("./routes/recipes");
 app.use("/api/recipes", recipesRouter);
-
-// Dirigera all övrig trafik till webbapplikationen.
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/build/index.html"));
-});
 
 // Kör server.
 app.listen(port, () => {
