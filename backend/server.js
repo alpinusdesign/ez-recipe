@@ -36,7 +36,7 @@ connection.once("open", () => {
 
 // Dirigera trafik till recepthanterare.
 const recipesRouter = require("./routes/recipes");
-app.use("/recipes", recipesRouter);
+app.use("/api/recipes", recipesRouter);
 
 // Kör server.
 app.listen(port, () => {

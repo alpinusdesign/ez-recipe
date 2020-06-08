@@ -84,7 +84,7 @@ class RecipeEditor extends Component {
     e.preventDefault();
 
     axios
-      .put(`http://localhost:5000/recipes/${this.state.id}`, {
+      .put(`/api/recipes/${this.state.id}`, {
         name: this.state.name,
         description: this.state.description,
         ingredients: this.state.ingredients,
@@ -98,7 +98,7 @@ class RecipeEditor extends Component {
 
   // Removes the recipe from the database and indirectly redirects on next render.
   deleteRecipe = (id) => {
-    axios.delete(`http://localhost:5000/recipes/${id}`).then((res) => {
+    axios.delete(`/api/recipes/${id}`).then((res) => {
       console.log(res.data);
       this.setState({ delete: true });
     });
@@ -108,7 +108,7 @@ class RecipeEditor extends Component {
   // Fetches the recipe from the database if the component mounted correctly.
   componentDidMount() {
     axios
-      .get(`/recipes/${this.props.match.params.id}`)
+      .get(`/api/recipes/${this.props.match.params.id}`)
       .then((res) => {
         this.setState({
           id: res.data._id,
